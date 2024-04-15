@@ -27,9 +27,14 @@ final class APIManager{
         }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data,error == nil else {
+            guard let data = data else {
                 return
             }
+    
+            //this is wrong -- do not do this
+//            guard let error = error else {
+//                return
+//            }
             
             guard let response = response as? HTTPURLResponse, 200...299
                     ~= response.statusCode else {
